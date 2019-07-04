@@ -1,7 +1,7 @@
 <?php
 
 #Arquivos diretórios raízes
-$pasta_interna = "";
+$pasta_interna = "AutoEscolaNovo/";
 define('DIRPAGE', "http://{$_SERVER['HTTP_HOST']}/{$pasta_interna}");
 if (substr($_SERVER['DOCUMENT_ROOT'], -1) == '/') {
     define('DIRREQ', "{$_SERVER['DOCUMENT_ROOT']}{$pasta_interna}");
@@ -26,6 +26,5 @@ function auto_load() {
     include_once DIRCLASS . '*.class.php';
     include_once DIRDAO . '*.class.php';
 }
-
 
 define("auto_load", "auto_load");
