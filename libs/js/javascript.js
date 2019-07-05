@@ -1,3 +1,40 @@
+//$('#img_usuario').click(function () {
+//    $('#foto_usuario').click();
+//});
+
+$('#img_usuario').bind('click', function ( )
+{
+    // AQUI QUE DEVE SER ATIVADA A CAIXA DE SELEÇÃO DE ARQUIVO */
+    $('#foto_usuario').click( );
+});
+
+
+
+function mudarEstado(el) {
+    var display = document.getElementById(el).style.display;
+    if (display === "none")
+        document.getElementById(el).style.display = 'block';
+    else
+        document.getElementById(el).style.display = 'none';
+}
+
+$(function () {
+    $(window).on("scroll", function () {
+        if ($(window).scrollTop() > 100) {
+            $(".bg-trans").addClass("bg-trans2");
+//            document.getElementById('navbar-scroll-a').style.width = '30%';
+            document.getElementById('navbar-scroll-a').style.width = '30%';
+            document.getElementById('navbar-scroll-img').style.width = '20%';
+        } else {
+            $(".bg-trans").removeClass("bg-trans2");
+            document.getElementById('navbar-scroll-a').style.width = '35%';
+            document.getElementById('navbar-scroll-img').style.width = '30%';
+        }
+    });
+});
+
+
+
 function implementarOption() {
     var opcao_instrutor = document.getElementById('opcao_instrutor').value;
     var opcao_aluno = document.getElementById('opcao_aluno').value;
@@ -34,7 +71,8 @@ function cliqueAjax() {
         return false;
     });
     $('form').trigger('submit');
-};
+}
+;
 
 
 

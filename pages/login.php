@@ -5,15 +5,8 @@ include_once DIRREQ . 'header.php';
 ?>
 
 <div class="bg-primary">
-    asdasd
-    asd
-    asd
-    asd
-    <br>
-    asdsad
-    <?php
-
-    ?>
+    
+    CORPO
 </div>
 
 <?php
