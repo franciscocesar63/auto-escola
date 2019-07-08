@@ -17,14 +17,19 @@ define('DIRCLASS', DIRPAGE . "classes");
 define('DIRDAO', DIRPAGE . "dao");
 
 #Acesso ao banco de dados
+define('DIRDB', DIRREQ . 'banco/');
+
 define('HOST', "localhost");
-define('DB', "auto");
+define('DB', "autoescola");
 define('USER', "root");
 define('PASS', "");
 
 function auto_load() {
+    
+    
     include_once DIRCLASS . '*.class.php';
+    
+    
     include_once DIRDAO . '*.class.php';
 }
 
-define("auto_load", "auto_load");

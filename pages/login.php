@@ -2,17 +2,32 @@
 include_once '../config/config.php';
 
 include_once DIRREQ . 'header.php';
+include_once DIRDB . 'conexao.php';
+
+$conexao = new ClassConexao();
+
+$pdo = $conexao->conectaDB();
+
+$qry = $pdo->prepare("SELECT * from usuario");
+$qry->execute();
+
+var_dump($qry->fetch(PDO::FETCH_ASSOC));
+
+
+
 ?>
 
 <div class="container">
+
+
 
     <form class="mt-5" style="text-align: center">
         <img class="mb-4" src="<?php echo DIRIMG . "logo-sistema.png" ?>" alt="Auto Escola">
         <h1 class="h3 mb-3 font-weight-normal">Faça login</h1>
         <label for="inputEmail" class="sr-only">Endereço de email</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Seu email" required autofocus>
+        <input type="text" id="inputEmail" name="login" class="form-control" placeholder="Seu email" required autofocus>
         <label for="inputPassword" class="sr-only">Senha</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+        <input type="password" id="inputPassword" name="senha" class="form-control" placeholder="Senha" required>
         <div class="checkbox mb-3">
             <label>
                 <input type="checkbox" value="remember-me"> Lembrar de mim
