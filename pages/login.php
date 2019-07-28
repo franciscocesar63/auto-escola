@@ -8,18 +8,39 @@ include_once DIRREQ . "dao/AutenticaDAO.php";
 
 $conexao = new ClassConexao();
 $pdo = $conexao->conectaDB();
-$autentica = new AutenticaDAO();
-$resultado = $autentica->autenticaUsuario('cesar', md5(md5(123)));
 
-var_dump($resultado);
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+if (isset($_SESSION['usuario'])) {
+    echo "<script>window.location.href='" . DIRPAGE . "painel-usuario.php'</script>";
+}
+
+if (isset($_POST['login'])) {
+    $autentica = new AutenticaDAO();
+
+    $resultado = $autentica->autenticaUsuario($_POST['login'], md5(md5($_POST['senha'])));
+    if (is_array($resultado)) {
+        $error = $resultado;
+    } else {
+        $_SESSION['usuario'] = serialize($resultado);
+        echo "<script>window.location.href='" . DIRPAGE . "painel-usuario.php'</script>";
+    }
+}
 ?>
 
 <div class="container">
 
 
-
-    <form class="mt-5" style="text-align: center">
+    <form class="mt-5" style="text-align: center" method="POST" action="#">
         <img class="mb-4" src="<?php echo DIRIMG . "logo-sistema.png" ?>" alt="Auto Escola">
+        <?php
+        if (isset($error)) {
+            foreach ($error as $msg)
+                echo '<br>' . $msg;
+        }
+        ?>
         <h1 class="h3 mb-3 font-weight-normal">Faça login</h1>
         <label for="inputEmail" class="sr-only">Endereço de email</label>
         <input type="text" id="inputEmail" name="login" class="form-control" placeholder="Seu email" required autofocus>
