@@ -1,6 +1,6 @@
 <?php
 
-include_once DIRCLASS . "Autoload.php";
+
 
 class Funcionario extends Pessoa {
 

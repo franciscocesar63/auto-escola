@@ -13,8 +13,9 @@ if (substr($_SERVER['DOCUMENT_ROOT'], -1) == '/') {
 define('DIRIMG', DIRPAGE . "img/");
 define('DIRCSS', DIRPAGE . "libs/css/");
 define('DIRJS', DIRPAGE . "libs/js/");
-define('DIRCLASS', DIRPAGE . "classes");
-define('DIRDAO', DIRPAGE . "dao");
+define('DIRCLASS', DIRPAGE . "classes/");
+define('DIRDAO', DIRPAGE . "dao/");
+
 
 #Acesso ao banco de dados
 define('DIRDB', DIRREQ . 'banco/');

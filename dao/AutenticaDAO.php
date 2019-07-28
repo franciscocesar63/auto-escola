@@ -2,7 +2,7 @@
 
 include_once DIRDB . "conexao.php";
 
-include_once DIRCLASS . "Autoload.php";
+include_once DIRREQ . "classes/Autoload.php";
 $autoload = new Autoload();
 
 if (!isset($_SESSION)) {
@@ -57,13 +57,15 @@ class AutenticaDAO {
                     $dado_endereco = $qry_endereco->fetch(PDO::FETCH_ASSOC);
                     $endereco = new Endereco($dado_endereco['logradouro'], $dado_endereco['numero_casa'], $dado_endereco['bairro'], $dado_endereco['complemento'], $dado_endereco['cidade'], $dado_endereco['cep']);
 //                            SELECT TELEFONE
-                    $qry_telefone = $pdo->prepare("SELECT * FROM endereco WHERE id= :id");
+                    $qry_telefone = $pdo->prepare("SELECT * FROM telefone WHERE id= :id");
                     $qry_telefone->bindParam(":id", $dados_usuario['id']);
                     $qry_telefone->execute();
                     $telefone = $qry_telefone->fetch(PDO::FETCH_ASSOC);
                     switch ($dado_funcionario['cargo']) {
                         case "gerente":
-                            $gerente = new Funcionario($dado_pessoa['nome'], $dado_pessoa['sexo'], $dado_pessoa['cpf'], $dado_pessoa['rg'], $dado_pessoa['email'], $endereco, $telefone, $dado_funcionario['cargo'], $dado_funcionario['salario'], $dado_funcionario['data_admissao']);
+                            $gerente = new Funcionario($dado_pessoa['nome'], $dado_pessoa['sexo'], $dado_pessoa['cpf'], $dado_pessoa['rg'],
+                                    $dado_pessoa['email'], $endereco, $telefone, $dado_funcionario['cargo'], $dado_funcionario['salario'], 
+                                    $dado_funcionario['data_admissao']);
                             return $gerente;
                             break;
                         case "instrutor":

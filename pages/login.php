@@ -4,17 +4,14 @@ include_once '../config/config.php';
 include_once DIRREQ . 'header.php';
 include_once DIRDB . 'conexao.php';
 
+include_once DIRREQ . "dao/AutenticaDAO.php";
+
 $conexao = new ClassConexao();
-
 $pdo = $conexao->conectaDB();
+$autentica = new AutenticaDAO();
+$resultado = $autentica->autenticaUsuario('cesar', md5(md5(123)));
 
-$qry = $pdo->prepare("SELECT * from usuario");
-$qry->execute();
-
-var_dump($qry->fetch(PDO::FETCH_ASSOC));
-
-
-
+var_dump($resultado);
 ?>
 
 <div class="container">

@@ -1,6 +1,6 @@
 <?php
 
-include DIRCLASS . "Endereco.class.php";
+include_once DIRREQ . "classes/Endereco.class.php";
 
 class Pessoa {
 
