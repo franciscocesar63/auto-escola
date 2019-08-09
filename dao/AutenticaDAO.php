@@ -1,5 +1,6 @@
 <?php
 
+
 include_once DIRDB . "conexao.php";
 
 include_once DIRREQ . "classes/Autoload.php";

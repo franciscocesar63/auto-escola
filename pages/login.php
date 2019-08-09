@@ -1,9 +1,8 @@
 <?php
 include_once '../config/config.php';
-
+$tela = "login";
 include_once DIRREQ . 'header.php';
 include_once DIRDB . 'conexao.php';
-
 include_once DIRREQ . "dao/AutenticaDAO.php";
 
 $conexao = new ClassConexao();
@@ -33,30 +32,41 @@ if (isset($_POST['login'])) {
 <div class="container">
 
 
-    <form class="mt-5" style="text-align: center" method="POST" action="#">
-        <img class="mb-4" src="<?php echo DIRIMG . "logo-sistema.png" ?>" alt="Auto Escola">
-        <?php
-        if (isset($error)) {
-            foreach ($error as $msg)
-                echo '<br>' . $msg;
-        }
-        ?>
-        <h1 class="h3 mb-3 font-weight-normal">Faça login</h1>
-        <label for="inputEmail" class="sr-only">Endereço de email</label>
-        <input type="text" id="inputEmail" name="login" class="form-control" placeholder="Seu email" required autofocus>
-        <label for="inputPassword" class="sr-only">Senha</label>
-        <input type="password" id="inputPassword" name="senha" class="form-control" placeholder="Senha" required>
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Lembrar de mim
-            </label>
+    <form class="mt-5" style="" method="POST" action="#">
+
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <!-- Tabs Titles -->
+
+                <!-- Icon -->
+                <div class="fadeIn first">
+                    <img class="mb-4 mt-3" src="<?php echo DIRIMG . "logo-sistema.png" ?>" alt="Auto Escola">
+                </div>
+                <!--Error mensage-->
+                <?php
+                if (isset($error)) {
+                    foreach ($error as $msg)
+                        echo '<br>' . $msg;
+                }
+                ?>
+                <!-- Login Form -->
+                <form>
+                    <input type="text" id="login" name="login" class="fadeIn second" name="login" placeholder="login">
+                    <input type="text" id="password" name="senha" class="fadeIn third" name="login" placeholder="password">
+                    <input type="submit" class="fadeIn fourth" value="Log In">
+                </form>
+
+                <!-- Remind Passowrd -->
+                <div id="formFooter">
+                    <a class="underlineHover" href="#">Forgot Password?</a>
+                </div>
+
+            </div>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+
+
     </form>
 
-
-</div>
-
-<?php
-require_once (DIRREQ . "footer.php");
-?>
+    <?php
+    require_once (DIRREQ . "footer.php");
+    ?>
